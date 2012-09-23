@@ -13,19 +13,19 @@
         }
 
         var attr = {
-            target: '',
-            container: '',
-            overload: '',
-            label: 'Selecione um item',
-            labelContainer: null,
-            callback: function () {
+            'target': '',
+            'container': '',
+            'overload': '',
+            'label': 'Selecione um item',
+            'labelContainer': null,
+            'callback': function () {
                 $.noop()
             },
-            listItens: [],
-            list: null,
-            main: null,
-            button: null,
-            ready: false
+            'listItens': [],
+            'list': null,
+            'main': null,
+            'button': null,
+            'ready': false
         };
 
         var methods = {
