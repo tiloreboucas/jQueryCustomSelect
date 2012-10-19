@@ -74,7 +74,69 @@
 				else $this.attr.isReadOnly = false;
 				
 				if($this.attr.isReadOnly) methods.toReadOnly.call($this); 
+				
+				// Teste
+				if (!$this.attr.ready) methods.onFocus.call($this); 
             },
+			
+			listToObject: function() {
+				var $this = this;
+				
+				var objListItens = [];
+				
+				$($this.attr.listItens).each(function (i, item) {
+                    var obj = {
+						value: item.split('|')[0],
+						text: item.split('|')[1]
+					};
+					
+					objListItens.push(obj);
+                });
+				
+				return objListItens;
+			},
+			
+			onFocus: function() {
+				var $this = this;
+
+				$($this.attr.main).focusin(function(){
+					if($this.attr.isReadOnly) return false;
+					
+					var r = methods.listToObject.call($this);
+
+					$($this.attr.main).unbind().keydown(function(e){ 
+						var valueLi = null;
+						var textLi = null;
+						var i = null;
+						
+						if ((($this.attr.target).attr('data-index') != "") && (($this.attr.target).attr('data-index') != undefined)) i = parseInt($($this.attr.target).attr('data-index'));
+						
+						if(e.which == 40) {
+							if(i == null) { 
+								i = 0;
+							} else if(i >= 0 && i < r.length - 1) {
+								i++;
+							}
+						} else if(e.which == 38) {
+							if(i == null) { 
+								i = 0;
+							} else if (i > 0) { 
+								i--;
+							}
+						}
+						
+						$($this.attr.target).attr('data-index', i);
+						
+						valueLi = r[i].value;
+						textLi = r[i].text;
+						
+						methods.refreshHidden.call($this, valueLi);
+						methods.hideList.call($this);
+						methods.setLabel.call($this, textLi);
+						$this.attr.onChange();
+					});
+				});
+			},
 
             startButton: function () {
                 var $this = this;
@@ -177,6 +239,7 @@
 				$($this.attr.target).removeAttr('readonly');
 				$($this.attr.target).removeAttr('data-readonly');
 				$($this.attr.main).removeClass('readonly');
+				$this.attr.isReadOnly = false;
 				
 				methods.startButton.call($this);
 			},
