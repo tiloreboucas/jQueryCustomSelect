@@ -22,7 +22,7 @@ Iniciar CustomSelect read-only
 	$('#item3').customselect();
 
 	
-Iniciar CustomSelect com ordenação DESC
+Iniciar CustomSelect com ordenaÃ§Ã£o DESC
 ---------------------------------------
 &lt;input type="hidden" id="item3" class="customselect" data-ordination="desc" data-overload="" data-label="" value="" /&gt;
 
