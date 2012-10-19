@@ -21,6 +21,12 @@ Iniciar CustomSelect read-only
 
 	$('#item3').customselect();
 
+	
+	
+Setar CustomSelect Read-and-Write
+------------------------------
+
+	$('#item3').customselect('toReadAndWrite');	
 
 
 Adicionar novo item
