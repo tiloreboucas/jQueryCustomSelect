@@ -12,20 +12,20 @@
 		<legend>Iniciar CustomSelect</legend>
 			<p><code><pre>&lt;input type="hidden" id="item1" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" /&gt;</pre></code></p>
 			<p><code><pre>$('#item1').customselect();</pre></code></p>
-			<input type="hidden" id="item1" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" /><br /><br /><br />
+			<input type="hidden" id="item1" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" />
 	</fieldset>
 	
 	<fieldset>
 		<legend>Iniciar CustomSelect com Callback no Click da linha</legend>
 			<p><code><pre>$('#item2').customselect({callback: function(){ console.log(['Callback']); }});</pre></code></p>
-			<input type="hidden" id="item2" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" /><br /><br /><br />
+			<input type="hidden" id="item2" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" />
 	</fieldset>
 	
 	<fieldset>
 		<legend>Iniciar CustomSelect read-only</legend>
 			<p><code><pre>&lt;input type="hidden" id="item3" class="customselect" data-readonly="true" data-overload="" data-label="" value="" /&gt;</pre></code></p>
 			<p><code><pre>$('#item3').customselect();</pre></code></p>
-			<input type="hidden" id="item3" class="customselect" data-overload="0|Novo,1|Usado" data-readonly="true" data-label="" value="" /><br /><br /><br />
+			<input type="hidden" id="item3" class="customselect" data-overload="0|Novo item realmente grande pra testar oque acontece quando o label é muito grande,1|Usado" data-readonly="true" data-label="" value="" />
 	</fieldset>
 	
 	<fieldset>

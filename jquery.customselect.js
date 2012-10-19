@@ -98,6 +98,13 @@
                     $('.customselect_container.active').removeClass('active');
                 });
             },
+			
+			stopButton: function(){
+				var $this = this;
+				
+				$($this.attr.button).unbind();
+				$($this.attr.labelContainer).unbind();
+			},
 
             setLabel: function (label) {
                 var $this = this;
@@ -161,7 +168,7 @@
 				
 				$($this.attr.target).attr('readonly', 'readonly');
 				$($this.attr.main).addClass('readonly');
-				$($this.attr.button).unbind();
+				methods.stopButton.call($this);
 			},
 			
 			toReadAndWrite: function(){
