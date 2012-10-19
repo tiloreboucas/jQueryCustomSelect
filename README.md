@@ -22,6 +22,12 @@ Iniciar CustomSelect read-only
 	$('#item3').customselect();
 
 	
+Iniciar CustomSelect com ordenação DESC
+---------------------------------------
+&lt;input type="hidden" id="item3" class="customselect" data-ordination="desc" data-overload="" data-label="" value="" /&gt;
+
+$('#item3').customselect();
+	
 	
 Setar CustomSelect Read-and-Write
 ------------------------------

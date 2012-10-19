@@ -26,7 +26,8 @@
             'main': null,
             'button': null,
             'ready': false,
-			'isReadOnly': false
+			'isReadOnly': false,
+			'ordination': ""
         };
 
         var methods = {
@@ -66,11 +67,14 @@
                 methods.setLabel.call($this, $this.attr.label);
 
                 if (!$this.attr.ready) $('<ul class="custonselect_list close"></ul>').appendTo($this.attr.container);
-
+				
+				if (($($this.attr.target).attr('data-ordination') != "") && ($($this.attr.target).attr('data-ordination') != undefined)) $this.attr.ordination = $($this.attr.target).attr('data-ordination');
+				else $this.attr.ordination = 'asc';
+				
                 $this.attr.list = $($this.attr.container).find('.custonselect_list')[0];
                 methods.overloadItens.call($this);
 				
-				if ((($this.attr.target).attr('data-readonly') != "") && (($this.attr.target).attr('data-readonly') != undefined)) $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly');
+				if (($($this.attr.target).attr('data-readonly') != "") && ($($this.attr.target).attr('data-readonly') != undefined)) $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly');
 				else $this.attr.isReadOnly = false;
 				
 				if($this.attr.isReadOnly) methods.toReadOnly.call($this); 
@@ -159,7 +163,7 @@
 			buildListItens: function(){
 				var $this = this;
 				
-				if ((($this.attr.target).attr('data-overload') != "") && (($this.attr.target).attr('data-overload') != undefined)) { $this.attr.overload = $($this.attr.target).attr('data-overload'); }
+				if (($($this.attr.target).attr('data-overload') != "") && ($($this.attr.target).attr('data-overload') != undefined)) { $this.attr.overload = $($this.attr.target).attr('data-overload'); }
                 var list = $this.attr.overload.split(',');
                 
 				var objListItens = [];
@@ -175,11 +179,13 @@
 				
 				var ordened = null;
 
-				function byTextAsc(a, b) {
-					return a.text > b.text;
-				}
-
-				objListItens.sort(byTextAsc);
+				function byTextAsc(a, b) { return a.text > b.text; }
+				function byTextDesc(a, b) { return a.text < b.text; }
+				
+				if($this.attr.ordination == 'desc')
+					objListItens.sort(byTextDesc);
+				else
+					objListItens.sort(byTextAsc);
 				
 				$this.attr.listItens = objListItens;
 			},

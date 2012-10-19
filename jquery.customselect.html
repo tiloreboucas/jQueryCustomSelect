@@ -29,6 +29,13 @@
 	</fieldset>
 	
 	<fieldset>
+		<legend>Iniciar CustomSelect com ordenação DESC</legend>
+			<p><code><pre>&lt;input type="hidden" id="item3" class="customselect" data-ordination="desc" data-overload="" data-label="" value="" /&gt;</pre></code></p>
+			<p><code><pre>$('#item3').customselect();</pre></code></p>
+			<input type="hidden" id="item4" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-ordination="desc" data-label="" value="" />
+	</fieldset>
+	
+	<fieldset>
 		<legend>Adicionar novo item</legend>
 			<p><code><pre>$('#item1').customselect('addNewItem', {id: '10', text: 'Novo Item'});</pre></code></p>
 		<input type="text" id="txt_teste" />
@@ -49,6 +56,7 @@
 		$('#item2').customselect({onChange: function(){ alert('onChange'); }});
 		
 		$('#item3').customselect();
+		$('#item4').customselect();
 		
 		$('#bt_teste_refresh').click(function(){
 			$('#item1').customselect('refresh');
