@@ -9,9 +9,9 @@ Iniciar CustomSelect
 
 
 	
-Iniciar CustomSelect com Callback no Click da linha
+Iniciar CustomSelect com Callback no onChange
 ---------------------------------------------------
-	$('#item2').customselect({callback: function(){ console.log(['Callback']); }});
+	$('#item2').customselect({onChange: function(){ console.log(['onChange']); }});
 
 
 
