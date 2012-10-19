@@ -41,7 +41,7 @@
 	background-color: #fff; 
 	background-position: center center; 
 	background-repeat: no-repeat; 
-	background-image: url('../img/vertical-increment-arrow.png');
+	background-image: url('img/vertical-increment-arrow.png');
 }
 
 .readonly .customselect_label,
