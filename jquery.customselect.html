@@ -16,8 +16,8 @@
 	</fieldset>
 	
 	<fieldset>
-		<legend>Iniciar CustomSelect com Callback no Click da linha</legend>
-			<p><code><pre>$('#item2').customselect({callback: function(){ console.log(['Callback']); }});</pre></code></p>
+		<legend>Iniciar CustomSelect com Callback no onChange</legend>
+			<p><code><pre>$('#item2').customselect({onChange: function(){ console.log(['onChange']); }});</pre></code></p>
 			<input type="hidden" id="item2" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" />
 	</fieldset>
 	
@@ -46,7 +46,7 @@
 	$(document).ready(function(){
 		$('#item1').customselect();
 		
-		$('#item2').customselect({callback: function(){ alert('Callback'); }});
+		$('#item2').customselect({onChange: function(){ alert('onChange'); }});
 		
 		$('#item3').customselect();
 		

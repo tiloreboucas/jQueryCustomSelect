@@ -18,7 +18,7 @@
             'overload': '',
             'label': 'Selecione um item',
             'labelContainer': null,
-            'callback': function () {
+            'onChange': function () {
                 $.noop()
             },
             'listItens': [],
@@ -130,7 +130,7 @@
                     methods.refreshHidden.call($this, valueLi);
                     methods.hideList.call($this);
                     methods.setLabel.call($this, textLi);
-                    $this.attr.callback();
+                    $this.attr.onChange();
                     return false;
                 });
             },
