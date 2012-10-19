@@ -45,7 +45,7 @@
 }
 
 .readonly .customselect_label,
-.readonly .customselect_button { background-color: #B0B0B0; }
+.readonly .customselect_button { background-color: #f1f1f1; color: #ccc; cursor: default; }
 
 .custonselect_list { 
 	max-height: 350px;
