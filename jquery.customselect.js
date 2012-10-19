@@ -61,7 +61,7 @@
 
                 $this.attr.button = $($this.attr.container).find('.customselect_button')[0];
 
-                if (!$this.attr.ready) methods.toReadAndWrite.call($this);
+                if (!$this.attr.ready) methods.startButton.call($this);
 
                 methods.setLabel.call($this, $this.attr.label);
 
@@ -70,8 +70,8 @@
                 $this.attr.list = $($this.attr.container).find('.custonselect_list')[0];
                 methods.overloadItens.call($this);
 				
-				if ((($this.attr.target).attr('data-readonly') != "") && (($this.attr.target).attr('data-readonly') != undefined)) { $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly'); }
-				else {$this.attr.isReadOnly = false;}
+				if ((($this.attr.target).attr('data-readonly') != "") && (($this.attr.target).attr('data-readonly') != undefined)) $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly');
+				else $this.attr.isReadOnly = false;
 				
 				if($this.attr.isReadOnly) methods.toReadOnly.call($this); 
             },
@@ -85,7 +85,14 @@
 
                     return false;
                 });
+				
+				$($this.attr.labelContainer).click(function (e) {
+                    if ($($this.attr.list).hasClass('close')) methods.showList.call($this);
+                    else methods.hideList.call($this);
 
+                    return false;
+                });
+				
                 $('body').click(function () {
                     $('.custonselect_list.open').removeClass('open').addClass('close');
                     $('.customselect_container.active').removeClass('active');
@@ -152,17 +159,19 @@
 			toReadOnly: function(){
 				var $this = this;
 				
-				$($this.attr.button).unbind();
-				
+				$($this.attr.target).attr('readonly', 'readonly');
 				$($this.attr.main).addClass('readonly');
+				$($this.attr.button).unbind();
 			},
 			
 			toReadAndWrite: function(){
 				var $this = this;
 				
-				methods.startButton.call($this);
-				
+				$($this.attr.target).removeAttr('readonly');
+				$($this.attr.target).removeAttr('data-readonly');
 				$($this.attr.main).removeClass('readonly');
+				
+				methods.startButton.call($this);
 			},
 
             addNewItem: function (obj) {
