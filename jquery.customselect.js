@@ -173,6 +173,14 @@
 					objListItens.push(obj);
                 });
 				
+				var ordened = null;
+
+				function byTextAsc(a, b) {
+					return a.text > b.text;
+				}
+
+				objListItens.sort(byTextAsc);
+				
 				$this.attr.listItens = objListItens;
 			},
 
