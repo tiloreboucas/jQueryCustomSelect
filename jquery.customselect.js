@@ -105,6 +105,8 @@
 					var r = methods.listToObject.call($this);
 
 					$($this.attr.main).unbind().keydown(function(e){ 
+						e.isDefaultPrevented();
+						
 						var valueLi = null;
 						var textLi = null;
 						var i = null;
