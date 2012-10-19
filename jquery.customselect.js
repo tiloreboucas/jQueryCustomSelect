@@ -74,35 +74,15 @@
 				else $this.attr.isReadOnly = false;
 				
 				if($this.attr.isReadOnly) methods.toReadOnly.call($this); 
-				
-				// Teste
+
 				if (!$this.attr.ready) methods.onFocus.call($this); 
             },
-			
-			listToObject: function() {
-				var $this = this;
-				
-				var objListItens = [];
-				
-				$($this.attr.listItens).each(function (i, item) {
-                    var obj = {
-						value: item.split('|')[0],
-						text: item.split('|')[1]
-					};
-					
-					objListItens.push(obj);
-                });
-				
-				return objListItens;
-			},
 			
 			onFocus: function() {
 				var $this = this;
 
 				$($this.attr.main).focusin(function(){
 					if($this.attr.isReadOnly) return false;
-					
-					var r = methods.listToObject.call($this);
 
 					$($this.attr.main).unbind().keydown(function(e){ 
 						e.isDefaultPrevented();
@@ -116,7 +96,7 @@
 						if(e.which == 40) {
 							if(i == null) { 
 								i = 0;
-							} else if(i >= 0 && i < r.length - 1) {
+							} else if(i >= 0 && i < $this.attr.listItens.length - 1) {
 								i++;
 							}
 						} else if(e.which == 38) {
@@ -129,8 +109,8 @@
 						
 						$($this.attr.target).attr('data-index', i);
 						
-						valueLi = r[i].value;
-						textLi = r[i].text;
+						valueLi = $this.attr.listItens[i].value;
+						textLi = $this.attr.listItens[i].text;
 						
 						methods.refreshHidden.call($this, valueLi);
 						methods.hideList.call($this);
@@ -175,17 +155,38 @@
 
                 $($this.attr.labelContainer).text(label);
             },
+			
+			buildListItens: function(){
+				var $this = this;
+				
+				if ((($this.attr.target).attr('data-overload') != "") && (($this.attr.target).attr('data-overload') != undefined)) { $this.attr.overload = $($this.attr.target).attr('data-overload'); }
+                var list = $this.attr.overload.split(',');
+                
+				var objListItens = [];
+				
+				$(list).each(function (i, item) {
+                    var obj = {
+						value: item.split('|')[0],
+						text: item.split('|')[1]
+					};
+					
+					objListItens.push(obj);
+                });
+				
+				$this.attr.listItens = objListItens;
+			},
 
             overloadItens: function () {
                 var $this = this;
-
-                if ((($this.attr.target).attr('data-overload') != "") && (($this.attr.target).attr('data-overload') != undefined)) { $this.attr.overload = $($this.attr.target).attr('data-overload'); }
-                $this.attr.listItens = $this.attr.overload.split(',');
-                $($this.attr.list).html('');
-                $($this.attr.listItens).each(function (i, item) {
-                    $('<li data-value="' + item.split('|')[0] + '"><span>' + item.split('|')[1] + '</span></li>').appendTo($this.attr.list);
+				
+				methods.buildListItens.call($this);
+				
+				$($this.attr.list).html('');
+				
+				$($this.attr.listItens).each(function (i, item) {
+                    $('<li data-value="' + item.value + '"><span>' + item.text + '</span></li>').appendTo($this.attr.list);
                 });
-
+				
                 var liGroup = $($this.attr.list).find('li');
 
                 $(liGroup).click(function () {
@@ -217,12 +218,9 @@
                 var $this = this;
 
                 $($this.attr.listItens).each(function (i, item) {
-                    var currentValue = item.split('|')[0];
-                    var currentItem = item.split('|')[1];
-
-                    if (currentValue == newValue) {
-                        methods.setLabel.call($this, currentItem);
-                        methods.refreshHidden.call($this, currentValue);
+                    if (item.value == newValue) {
+                        methods.setLabel.call($this, item.text);
+                        methods.refreshHidden.call($this, item.value);
                     }
                 });
             },
