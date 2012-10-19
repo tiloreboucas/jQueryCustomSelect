@@ -41,6 +41,9 @@
 	background-image: url('../img/vertical-increment-arrow.png');
 }
 
+.readonly .customselect_label,
+.readonly .customselect_button { background-color: #B0B0B0; }
+
 .custonselect_list { 
 	max-height: 350px;
 	overflow: auto; 

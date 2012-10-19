@@ -25,7 +25,8 @@
             'list': null,
             'main': null,
             'button': null,
-            'ready': false
+            'ready': false,
+			'isReadOnly': false
         };
 
         var methods = {
@@ -52,19 +53,15 @@
 
                 if (!$this.attr.ready) $($this.attr.container).wrap('<div class="customselect_main" />');
                 $this.attr.main = $($this.attr.container).parent();
-
+				
                 if (!$this.attr.ready) $('<div class="customselect_label"></div>').appendTo($this.attr.container);
                 $this.attr.labelContainer = $($this.attr.container).find('.customselect_label')[0];
-
-                if (!$this.attr.ready) {
-                    $('<button type="button" class="customselect_button"></button>').appendTo($this.attr.container);
-                }
+				
+				if (!$this.attr.ready) $('<button type="button" class="customselect_button"></button>').appendTo($this.attr.container);
 
                 $this.attr.button = $($this.attr.container).find('.customselect_button')[0];
 
-                if (!$this.attr.ready) {
-                    methods.startButton.call($this);
-                }
+                if (!$this.attr.ready) methods.toReadAndWrite.call($this);
 
                 methods.setLabel.call($this, $this.attr.label);
 
@@ -72,18 +69,19 @@
 
                 $this.attr.list = $($this.attr.container).find('.custonselect_list')[0];
                 methods.overloadItens.call($this);
+				
+				if ((($this.attr.target).attr('data-readonly') != "") && (($this.attr.target).attr('data-readonly') != undefined)) { $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly'); }
+				else {$this.attr.isReadOnly = false;}
+				
+				if($this.attr.isReadOnly) methods.toReadOnly.call($this); 
             },
 
             startButton: function () {
                 var $this = this;
 
                 $($this.attr.button).click(function (e) {
-                    console.log('click');
-                    if ($($this.attr.list).hasClass('close')) {
-                        methods.showList.call($this);
-                    } else {
-                        methods.hideList.call($this);
-                    }
+                    if ($($this.attr.list).hasClass('close')) methods.showList.call($this);
+                    else methods.hideList.call($this);
 
                     return false;
                 });
@@ -150,6 +148,22 @@
                     }
                 });
             },
+			
+			toReadOnly: function(){
+				var $this = this;
+				
+				$($this.attr.button).unbind();
+				
+				$($this.attr.main).addClass('readonly');
+			},
+			
+			toReadAndWrite: function(){
+				var $this = this;
+				
+				methods.startButton.call($this);
+				
+				$($this.attr.main).removeClass('readonly');
+			},
 
             addNewItem: function (obj) {
                 var $this = this;
