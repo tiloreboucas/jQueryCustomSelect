@@ -1,62 +1,47 @@
-jQueryCustomSelect
+jQuery Loader
 ============
 
-Demo
---------------------
-http://tilowr.com.br/github/jQueryCustomSelect/jquery.customselect.html
+O CustomSelect tem como principal objetivo facilitar o uso e a customização de selects com uma aparencia mais agradável e mais maleável do que às oferecidas pelos SO/Navegadores, feito utilizando HTML, CSS e JavaScript, tem sua estrutura aceita por todos os navegadores atuais. além de podemos ser submetido com um form ainda pode ser navegável pelo teclado facilitando seu uso. Criado por [TiloWR](http://twitter.com/tilowr)
+
+Não deixe de visitar [TiloWR.com.br](http://www.tilowr.com.br).
 
 
+Início Rápido
+---------------
 
-Iniciar CustomSelect
---------------------
-&lt;input type="hidden" id="item1" class="customselect" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul" data-label="Selecione uma cor" value="" /&gt;
-
-	$('#item1').customselect();
+Clone o repositório, `git clone git://github.com/tilowr/jQueryCustomSelect.git`, ou [baixe a última versão](https://github.com/tilowr/jQueryCustomSelect/zipball/master).
 
 
-	
-Iniciar CustomSelect com Callback no onChange
----------------------------------------------------
-	$('#item2').customselect({onChange: function(){ console.log(['onChange']); }});
+Exemplo/Documentação
+---------
+
+http://tilowr.com.br/github/#jQueryCustomSelect
 
 
+Versionamento
+---------------
 
-Iniciar CustomSelect read-only
-------------------------------
-&lt;input type="hidden" id="item3" class="customselect" data-readonly="true" data-overload="" data-label="" value="" /&gt;
-
-	$('#item3').customselect();
+Como ainda está em processo de desenvolvimento para versão BETA, ainda não tenho uma numeração de versionamento fechada, porém o objetivo será usar [Semantic Versioning 2.0.0-rc.1](http://semver.org/) 
 
 
-	
-Iniciar CustomSelect com ordenação DESC
----------------------------------------
-&lt;input type="hidden" id="item3" class="customselect" data-ordination="desc" data-overload="" data-label="" value="" /&gt;
+Bug tracker
+-------------
+Encontrou um BUG por favor crie um Issues aqui mesmo no GitHub
 
-	$('#item3').customselect();
-
+https://github.com/tilowr/jQueryCustomSelect/issues
 
 
-Limite de Linhas Exibidas ( Com base na altura da primeira linha )
-&lt;input type="hidden" id="item5" class="customselect" data-limit="3" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul,6|verde,7|amarelo,8|verde,9|vermelho,10|azul" /&gt;
+Atualizações
+---------------
 
-	$('#item5').customselect();
-	
-
-	
-Setar CustomSelect Read-and-Write
-------------------------------
-
-	$('#item3').customselect('toReadAndWrite');	
+Fique atento à atualizações, dê um Watch no jQuery Loader
 
 
+Desenvolvimento e Contribuições
+---------------------------------
 
-Adicionar novo item
--------------------
-	$('#item1').customselect('addNewItem', {id: '10', text: 'Novo Item'});
+Até esse momento esse é um projeto solo, porém estou aberto a sugestões e melhorias no código, se quiser contribuir entre em contato com [tilowr@gmail.com](tilowr@gmail.com) com o assunto jQuery Loader / Contribuição 
 
 
-
-Atualizar lista com base no atributo data-overload
---------------------------------------------------
-	$('#item1').customselect('refresh');
+Licença de Uso
+----------------
