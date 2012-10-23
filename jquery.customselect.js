@@ -27,7 +27,8 @@
             'button': null,
             'ready': false,
 			'isReadOnly': false,
-			'ordination': ""
+			'ordination': "",
+            'limit': null
         };
 
         var methods = {
@@ -48,6 +49,8 @@
                 var $this = this;
 
                 if ((($this.attr.target).attr('data-label') != "") && (($this.attr.target).attr('data-label') != undefined)) { $this.attr.label = $($this.attr.target).attr('data-label'); }
+
+                if ((($this.attr.target).attr('data-limit') != "") && (($this.attr.target).attr('data-limit') != undefined)) { $this.attr.limit = $($this.attr.target).attr('data-limit'); }
 
                 if (!$this.attr.ready) $($this).wrap('<div class="customselect_container" />');
                 $this.attr.container = $($this).parent();
@@ -73,7 +76,14 @@
 				
                 $this.attr.list = $($this.attr.container).find('.custonselect_list')[0];
                 methods.overloadItens.call($this);
-				
+
+                if($this.attr.limit) {
+                    methods.showList.call($this);
+                    var maxHeight = $($this.attr.list).find('li').eq(0).outerHeight(true) * parseInt($this.attr.limit);
+                    methods.hideList.call($this);
+                    $($this.attr.list).css({'max-height': maxHeight});
+                }                
+
 				if (($($this.attr.target).attr('data-readonly') != "") && ($($this.attr.target).attr('data-readonly') != undefined)) $this.attr.isReadOnly = $($this.attr.target).attr('data-readonly');
 				else $this.attr.isReadOnly = false;
 				

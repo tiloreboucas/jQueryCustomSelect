@@ -36,6 +36,13 @@
 	</fieldset>
 	
 	<fieldset>
+		<legend>Limite de Linhas Exibidas ( Com base na altura da primeira linha )</legend>
+			<p><code><pre>&lt;input type="hidden" id="item5" class="customselect" data-limit="3" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul,6|verde,7|amarelo,8|verde,9|vermelho,10|azul" /&gt;</pre></code></p>
+			<p><code><pre>$('#item5').customselect();</pre></code></p>
+			<input type="hidden" id="item5" class="customselect"  data-limit="3" data-overload="5|verde,1|amarelo,2|verde,3|vermelho,4|azul,6|verde,7|amarelo,8|verde,9|vermelho,10|azul" />
+	</fieldset>
+
+	<fieldset>
 		<legend>Adicionar novo item</legend>
 			<p><code><pre>$('#item1').customselect('addNewItem', {id: '10', text: 'Novo Item'});</pre></code></p>
 		<input type="text" id="txt_teste" />
@@ -52,11 +59,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#item1').customselect();
-		
 		$('#item2').customselect({onChange: function(){ alert('onChange'); }});
-		
 		$('#item3').customselect();
 		$('#item4').customselect();
+		$('#item5').customselect();
 		
 		$('#bt_teste_refresh').click(function(){
 			$('#item1').customselect('refresh');
