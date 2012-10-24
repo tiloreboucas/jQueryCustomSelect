@@ -10,6 +10,7 @@
 	box-shadow: 0 0 10px #B8B8B8; 
 	position: absolute; 
 	background-color: #fff; 
+	width: 200px;
 }
 
 .customselect_container.active { z-index: 3; }
@@ -26,6 +27,7 @@
 	background-color: #fff;
 	overflow: hidden;
 	white-space: nowrap;	
+	width: 150px;
 }
 
 .customselect_button { 
@@ -48,7 +50,7 @@
 .readonly .customselect_button { background-color: #f1f1f1; color: #ccc; cursor: default; }
 
 .custonselect_list { 
-	max-height: 350px;
+	max-height: 250px;
 	overflow: auto; 
 	margin: 0px 0px 3px 0px; 
 	padding: 0px; 
