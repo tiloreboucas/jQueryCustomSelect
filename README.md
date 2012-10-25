@@ -1,4 +1,4 @@
-jQuery Loader
+jQueryCustomSelect
 ============
 
 O CustomSelect tem como principal objetivo facilitar o uso e a customização de selects com uma aparencia mais agradável e mais maleável do que às oferecidas pelos SO/Navegadores, feito utilizando HTML, CSS e JavaScript, tem sua estrutura aceita por todos os navegadores atuais. além de podemos ser submetido com um form ainda pode ser navegável pelo teclado facilitando seu uso. Criado por [TiloWR](http://twitter.com/tilowr)
@@ -26,6 +26,7 @@ Como ainda está em processo de desenvolvimento para versão BETA, ainda não te
 
 Bug tracker
 -------------
+
 Encontrou um BUG por favor crie um Issues aqui mesmo no GitHub
 
 https://github.com/tilowr/jQueryCustomSelect/issues
@@ -44,4 +45,4 @@ Até esse momento esse é um projeto solo, porém estou aberto a sugestões e me
 
 
 Licença de Uso
-----------------
+--------------
