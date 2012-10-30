@@ -41,7 +41,7 @@ Fique atento à atualizações, dê um Watch no jQuery Loader
 Desenvolvimento e Contribuições
 ---------------------------------
 
-Até esse momento esse é um projeto solo, porém estou aberto a sugestões e melhorias no código, se quiser contribuir entre em contato com [tilowr@gmail.com](tilowr@gmail.com) com o assunto jQuery Loader / Contribuição 
+Se quiser contribuir entre em contato com [tilowr@gmail.com](tilowr@gmail.com) com o assunto jQuery CustomSelect / Contribuição 
 
 
 Licença de Uso
